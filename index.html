@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>covid19 - live</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    margin: 0%;
+    padding: 0%;
+    background-image: url('3.jpg');
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+.body {
+    margin: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+.g{
+    padding: 0%;
+    margin: 0%;
+}
+
+h1 {
+    color: rgb(255, 251, 251);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    align-items: center;
+    padding: 1cm 1cm;
+    margin-left: 13cm;
+    display: flex;
+
+}
+
+p {
+    text-align: center;
+    font-size: 1cm;
+    color: rgb(7, 7, 7);
+    padding: 0%;
+    margin: 0%;
+}
+#flex{
+    display: flex;
+    
+}
+.head{
+ display: flex;
+ background-color: rgba(20, 19, 19, 0.692);
+ text-align: center;
+ align-items: center;
+}
+@media screen and (max-width: 480px) {
+ h1{
+     font-size: 25px;
+     text-align: center;
+     margin-left: 0%;
+     padding: 0.3cm 0.3cm;
+ }
+}
+@media screen and (max-width: 480px){
+ p{
+     font-size: 25px;
+ }
+}
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+  }
+  
+  #panel {
+    padding: 50px;
+    display: none;
+  }
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+</style>
+<body>
+  <div class="head"> <h1>COVID-19 LIVE DATA <img src="india.png" alt="" height="40px" width="40px"> </h1></div> 
+    
+    <marquee behavior="scroll" direction="left" style="text-transform: uppercase; background-color: rgb(247, 240, 230); padding: 0.5cm 0.5cm;">Each day shows new cases reported since the previous day</marquee>
+<br> <br> <br>
+    <section class="body">
+    <div class="flex"> <div class="a">
+            <p id="demo" style="background-color: blanchedalmond;  color: rgb(17, 17, 17); border-radius: 1cm; " ></p>
+        </div> <br>
+        <div class="b">
+            <p id="js" style="background-color: rgb(204, 168, 168); border-radius: 1cm;"></p>
+        </div> <br>
+        <div class="c">
+            <p id="j2" style="background-color: rgba(75, 136, 112, 0.801);color: rgb(17, 17, 17); border-radius: 1cm;  "></p>
+        </div><br>
+        <div class="d">
+            <p id="j3" style="background-color: rgb(204, 177, 146); border-radius: 1cm;"></p>
+        </div> <br>
+        <div class="f">
+            <p id="j4"style="background-color: blanchedalmond;color: rgb(17, 17, 17); border-radius: 1cm;  "></p>
+        </div> <br>
+        <div class="g" style="margin-bottom : 0%; padding: 0%;">
+            <p id="j5" style="background-color: rgba(142, 188, 209, 0.795); border-radius: 1cm;"></p>
+        </div><br>
+        <div class="j">
+            <p id="j6" style="background-color: blanchedalmond;color: rgb(17, 17, 17); border-radius: 1cm;  "></p>
+        </div>
+    </div>   
+  
+    </section>
+
+    <script>
+        async function getdata() {
+            const obj1 = await fetch("https://api.covid19api.com/summary")
+            const obj2 = await obj1.json()
+            const obj3 = obj2.Countries[76].Country;
+            const obj4 = obj2.Countries[76].NewConfirmed;
+            const obj5 = obj2.Countries[76].NewDeaths;
+            const obj6 = obj2.Countries[76].NewRecovered;
+            const obj7 = obj2.Countries[76].TotalConfirmed;
+            const obj8 = obj2.Countries[76].TotalDeaths;
+            const obj9 = obj2.Countries[76].TotalRecovered;
+            document.getElementById("demo").innerHTML =  "Country:   "+""+ obj3;
+            document.getElementById("js").innerHTML = "New Confirmed:" + obj4;
+            document.getElementById("j2").innerHTML = "New Deaths :" + obj5;
+            document.getElementById("j3").innerHTML = "New Recovered :" + obj6;
+            document.getElementById("j4").innerHTML = "Total Confirmed :" + obj7;
+            document.getElementById("j5").innerHTML = "Total Deaths :" + obj8;
+            document.getElementById("j6").innerHTML = "Total Recovered : " + obj9;
+        }
+        getdata();
+    </script>
+   
+</body>
+
+</html>
